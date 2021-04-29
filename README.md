@@ -18,14 +18,14 @@ Say you are interested in knowing when NumPy, SciPy are imported.
 Assume you're also interested in ROOT which doesn't actually show up in `sys.modules` as ROOT but rather as ROOT.std.
 This block of code lets you do that:
 
-    import nersc_customs
-    from nersc_customs.reporters import TextFileReporter as Reporter
+    import customs
+    from customs.reporters import TextFileReporter as Reporter
     modules = [
         "numpy",
         "scipy",
         ("root", lambda sys_modules: "ROOT.std" in sys_modules)
     ]
-    nersc_customs.register_exit_hook(modules, Reporter)
+    customs.register_exit_hook(modules, Reporter)
 
 You can put that anywhere and when the code exits you'll get a file listing which of those modules were actually imported.
 
