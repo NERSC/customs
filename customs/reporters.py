@@ -7,6 +7,7 @@ import uuid
 
 from .core import Reporter
 
+
 class PrintReporter(Reporter):
     """Just prints the list of imports out
     """

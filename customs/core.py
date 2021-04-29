@@ -3,9 +3,10 @@ import atexit
 import sys
 from typing import Any, Callable, Dict, List, Tuple, Type, Union
 
+
 class Check:
     """Represents a module and a way to check that it was imported
-    
+
     A check has a `name` and associated callable predicate `pred`.  The name
     doesn't have to be the actual name of the module you want to check for,
     though that's the most obvious thing to do.  The predicate should accept a
@@ -41,7 +42,7 @@ class Inspector:
 
 class Reporter:
     """Takes some action given a list of imported module names
-    
+
     As the name implies, `Reporter` objects should probably report that modules
     have been imported.  Exactly how the reporting is done depends on what the
     user wants.  Text?  JSON?  Pickle?  POST to some endpoint?  Do nothing?
@@ -55,9 +56,9 @@ class Reporter:
 
 
 def register_exit_hook(modules: List[Union[str, Tuple[str, Callable]]],
-        reporter_cls: Type[Reporter],
-        *args: Any,
-        **kwargs: Any) -> None:
+                       reporter_cls: Type[Reporter],
+                       *args: Any,
+                       **kwargs: Any) -> None:
     """Construct and register an import inspection and report exit hook
 
     This is really the only function most people should need to call from this
@@ -100,7 +101,7 @@ def create_checks(modules: List[Union[str, Tuple[str, Callable]]]) -> List[Check
     silently and `None` is returned.
     """
 
-    checks = set([create_check(module) for module in modules]) 
+    checks = set([create_check(module) for module in modules])
 
     checks.discard(None)
     return sorted(list(checks), key=lambda c: c.name)

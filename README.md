@@ -1,6 +1,8 @@
 
 # :passport_control: customs
 
+![workflow](https://github.com/NERSC/customs/actions/workflows/tests.yml/badge.svg)
+
 Inspect and report Python packages of interest
 
 This helps you learn about what modules and packages are imported by Python processes when your code runs.
