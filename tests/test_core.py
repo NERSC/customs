@@ -66,16 +66,16 @@ def test_exit_hook_hit():
     script = dedent("""
     import customs
     from customs.reporters import PrintReporter as Reporter
-    customs.register_exit_hook(["tqdm"], Reporter)
-    import tqdm""")
+    customs.register_exit_hook(["pip"], Reporter)
+    import pip""")
     p = subprocess.run(["python"], input=script, capture_output=True, text=True)
-    assert(p.stdout == "['tqdm']\n")
+    assert(p.stdout == "['pip']\n")
 
 def test_exit_hook_miss():
     script = dedent("""
     import customs
     from customs.reporters import PrintReporter as Reporter
-    customs.register_exit_hook(["tqdm"], Reporter)""")
+    customs.register_exit_hook(["pip"], Reporter)""")
     p = subprocess.run(["python"], input=script, capture_output=True, text=True)
     assert(p.stdout == "[]\n")
 
